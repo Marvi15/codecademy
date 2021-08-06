@@ -1,0 +1,42 @@
+let humanScore = 0;
+let computerScore = 0;
+let currentRoundNumber = 1;
+
+// Write your code below:
+// This function will be called each round to determine which guess is closest to the target number.
+
+const generateTarget = () => {
+  x = Math.floor(Math.random() * 10);
+  return x;
+}
+const getAbsoluteDistance = (guess,guesser) => {
+  const x = Math.abs(guess - guesser);
+    return x;
+}
+
+//This function will be used to correctly increase the winner’s score after each round.
+
+const compareGuesses = (userGuess,comGuess,theNumber) => {
+  const user1 = getAbsoluteDistance(theNumber, userGuess);
+  const com1 = getAbsoluteDistance(theNumber,comGuess);
+
+  if(user1 === com1 || user1 < com1 ){
+    return true;
+  }else {
+  return false;
+  }
+}
+
+//This function will be used to correctly increase the winner’s score after each round.
+
+const updateScore = x => {
+  if(x === 'human'){
+    humanScore++;
+  }else {
+    computerScore++;
+  }
+}
+
+//This function will be used to update the round number after each round.
+
+const advanceRound = () => currentRoundNumber++;
